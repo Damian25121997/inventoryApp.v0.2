@@ -9,6 +9,10 @@ import ForgetPassword from "./pages/auth/ForgetPassword";
 import ChangePassword from "./pages/auth/ChangePassword";
 import Error404 from "./pages/404";
 import HomePage from "./pages/HomePage";
+import Proveedores from "./pages/Proveedores";
+import Inventario from "./pages/Inventario";
+import Pedidos from "./pages/Pedidos";
+import Historial from "./pages/Historial";
 
 function App() {
   // Verificar si el usuario tiene acceso a la ruta /home
@@ -24,13 +28,18 @@ function App() {
           path="restablecer-password/:token"
           element={<ChangePassword />}
         />
-        {isAuthenticated ? (
-          <Route path="home" element={<HomePage />} />
-        ) : (
-          <Route path="*" element={<Navigate to="/" replace />} />
-        )}
-        <Route path="*" element={<Error404 />} />
       </Route>
+      {isAuthenticated ? (
+        <Route path="home" element={<HomePage />} />
+      ) : (
+        <Route path="*" element={<Navigate to="/" replace />} />
+      )}
+      <Route path="proveedores" element={<Proveedores />} />
+      <Route path="inventario" element={<Inventario />} />
+      <Route path="pedidos" element={<Pedidos />} />
+      <Route path="historial" element={<Historial />} />
+
+      <Route path="*" element={<Error404 />} />
     </Routes>
   );
 }
